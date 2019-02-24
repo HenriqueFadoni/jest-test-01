@@ -64,3 +64,26 @@ test('clicking button increments counter display', () => {
   expect(counterDisplay.text()).toContain(counter + 1)
 });
 
+test('clicking button decrement counter display', () => {
+  const counter = 4;
+  const wrapper = setup(null, {counter});
+
+  const button = findByTestAttr(wrapper, 'decrement-button');
+  button.simulate('click');
+  wrapper.update();
+
+  const counterDisplay = findByTestAttr(wrapper, 'counter-display');
+  expect(counterDisplay.text()).toContain(counter - 1);
+})
+
+test('counter is 0 and decrement is clicked', () => {
+  let wrapper
+  beforeEach(() => {
+    wrapper = setup();
+    const button = findByTestAttr(wrapper, 'decrement-button');
+    button.simulate('click');
+    wrapper.update();
+  })
+})
+
+
