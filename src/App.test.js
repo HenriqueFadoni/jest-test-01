@@ -74,7 +74,7 @@ test('clicking button decrement counter display', () => {
 
   const counterDisplay = findByTestAttr(wrapper, 'counter-display');
   expect(counterDisplay.text()).toContain(counter - 1);
-})
+});
 
 test('counter is 0 and decrement is clicked', () => {
   let wrapper
@@ -83,7 +83,10 @@ test('counter is 0 and decrement is clicked', () => {
     const button = findByTestAttr(wrapper, 'decrement-button');
     button.simulate('click');
     wrapper.update();
-  })
-})
+    
+    const counterDisplay = findByTestAttr(wrapper, 'counter-display');
+    expect(counterDisplay.text()).toContain(0);
+  });
+});
 
 
